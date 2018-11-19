@@ -1,4 +1,4 @@
-package domain;
+package be.ucll.da.dentravak.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -29,16 +29,33 @@ public class Sandwich {
         this.price = price;
     }
 
+    public UUID getId() {
+        return id;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getIngredients() {
+        return ingredients;
+    }
+
+    public BigDecimal getPrice() {
+        return price;
+    }
+
     private Sandwich() {};
 
-    public Sandwich(UUID id, String name, String ingredients, BigDecimal price) {
-        this.id = id;
+    public Sandwich(String name, String ingredients, BigDecimal price) {
         this.name = name;
         this.ingredients = ingredients;
         this.price = price;
     }
-
-
 
     public static class SandwichBuilder {
         private String name;
@@ -67,9 +84,9 @@ public class Sandwich {
 
         public Sandwich build() {
             Sandwich sandwich = new Sandwich();
-            sandwich.setName(name);
-            sandwich.setIngredients(ingredients);
-            sandwich.setPrice(price);
+            sandwich.name = name;
+            sandwich.ingredients = ingredients;
+            sandwich.price = price;
             return sandwich;
         }
     }
