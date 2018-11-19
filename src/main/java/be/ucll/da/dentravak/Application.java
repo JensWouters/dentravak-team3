@@ -27,8 +27,6 @@ public class Application {
             repository.save(new Sandwich("Gezond", "Groentjes", new BigDecimal("4.00")));
             repository.save(new Sandwich("Martino", "Preparé en juunkes", new BigDecimal("4.00")));
             repository.save(new Sandwich("Boulet", "Boulet en juunkes", new BigDecimal("4.50")));
-
-
         };
     }
 }
