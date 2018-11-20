@@ -16,30 +16,28 @@ public class OrderController {
         this.repo = repo;
     }
 
-    @RequestMapping(value = "/allOrders", method = RequestMethod.GET)
-    public List<Order> getOrders() {
-
-        return (List) repo.findAll();
-    }
-
     @RequestMapping(value = "/orders", method = RequestMethod.POST)
-    public void addOrder(@RequestBody Order o) {
+    public Order addOrder(@RequestBody Order o) {
         Order order = new Order(o.getSandwichId(), o.getName(), o.getBreadType(), o.getPrice(), o.getMobilePhoneNumber());
 
-        repo.save(order);
+        return repo.save(order);
     }
 
     @RequestMapping(value="/orders", method = RequestMethod.GET)
-    public List<Order> getOrdersByDate(@RequestParam("date") String creationDate) {
+    public List<Order> getOrders(@RequestParam(value = "date", required = false) String creationDate) {
 
-        List<Order> orders = (List) repo.findAll();
-        List<Order> ordersOnDate = new ArrayList();
-        for (Order o : orders) {
-            if (o.getCreationDate().split("T")[0].equals(creationDate)) {
-                ordersOnDate.add(o);
+        if (creationDate == null) {
+            return (List) repo.findAll();
+        } else {
+            List<Order> orders = (List) repo.findAll();
+            List<Order> ordersOnDate = new ArrayList();
+            for (Order o : orders) {
+                if (o.getCreationDate().split("T")[0].equals(creationDate)) {
+                    ordersOnDate.add(o);
+                }
             }
+            return ordersOnDate;
         }
-        return ordersOnDate;
     }
 
 }

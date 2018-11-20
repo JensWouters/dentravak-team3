@@ -27,24 +27,26 @@ public class SandwichController {
 
         return (List) repo.findAll();
     }
-    @RequestMapping(value = "/getSandwich/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/sandwiches/{id}", method = RequestMethod.GET)
     public Sandwich getSandwichById(@PathVariable(value="id") UUID id) {
         return repo.findById(id).get();
     }
 
-    @RequestMapping(value = "/addSandwich", method = RequestMethod.POST)
-    public void addSandwich(@RequestBody Sandwich s) {
+    @RequestMapping(value = "/sandwiches", method = RequestMethod.POST)
+    public Sandwich addSandwich(@RequestBody Sandwich s) {
        Sandwich sandwich =  new Sandwich(s.getName(), s.getIngredients(), s.getPrice());
 
-       repo.save(sandwich);
+       return repo.save(sandwich);
+
     }
 
-    @RequestMapping(value = "/updateSandwich/{id}", method = RequestMethod.PUT)
-    public void updateSandwich(@PathVariable(value="id") UUID id, @RequestBody Sandwich newSandwich) {
+    @RequestMapping(value = "/sandwiches/{id}", method = RequestMethod.PUT)
+    public Sandwich updateSandwich(@PathVariable(value="id") UUID id, @RequestBody Sandwich newSandwich) {
         Optional<Sandwich> s = repo.findById(id);
             s.get().setName(newSandwich.getName());
             s.get().setIngredients(newSandwich.getIngredients());
             s.get().setPrice(newSandwich.getPrice());
-        repo.save(s.get());
+        return repo.save(s.get());
+
     }
 }
