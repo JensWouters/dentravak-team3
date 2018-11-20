@@ -2,17 +2,13 @@ package be.ucll.da.dentravak.domain;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.UUID;
 
 @Entity
 @Table(name="orders")
 public class Order {
-
-    DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-    Date date = new Date();
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
@@ -30,8 +26,9 @@ public class Order {
         this.sandwichId = sandwichId;
         this.name = name;
         this.breadType = breadType;
-        this.creationDate = dateFormat.format(date);
+        this.creationDate = LocalDateTime.now().format(DateTimeFormatter.ISO_DATE_TIME);
         this.price = price;
+
         this.mobilePhoneNumber = mobilePhoneNumber;
     }
 

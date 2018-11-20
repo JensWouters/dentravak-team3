@@ -35,7 +35,7 @@ public class OrderController {
         List<Order> orders = (List) repo.findAll();
         List<Order> ordersOnDate = new ArrayList();
         for (Order o : orders) {
-            if (o.getCreationDate().split(" ")[0].equals(creationDate)) {
+            if (o.getCreationDate().split("T")[0].equals(creationDate)) {
                 ordersOnDate.add(o);
             }
         }
