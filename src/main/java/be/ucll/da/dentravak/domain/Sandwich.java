@@ -49,7 +49,7 @@ public class Sandwich {
         return price;
     }
 
-    private Sandwich() {};
+    public Sandwich() {};
 
     public Sandwich(String name, String ingredients, BigDecimal price) {
         this.name = name;

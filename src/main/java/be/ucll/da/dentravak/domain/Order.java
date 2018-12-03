@@ -1,5 +1,7 @@
 package be.ucll.da.dentravak.domain;
 
+import org.apache.tomcat.jni.Local;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -10,27 +12,33 @@ import java.util.UUID;
 @Table(name="orders")
 public class Order {
 
+    public enum BreadType{
+        BOTERHAMMEKES,
+        TURKS_BROOD,
+        WRAP
+    }
+
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private UUID id;
     private UUID sandwichId;
     private String name;
-    private String breadType;
-    private String creationDate;
+    private BreadType breadType;
+    private LocalDateTime creationDate;
     private BigDecimal price;
     private String mobilePhoneNumber;
 
-    private Order() {}
+    public Order() {}
 
-    public Order(UUID sandwichId, String name, String breadType, BigDecimal price, String mobilePhoneNumber) {
-        this.sandwichId = sandwichId;
-        this.name = name;
-        this.breadType = breadType;
-        this.creationDate = LocalDateTime.now().format(DateTimeFormatter.ISO_DATE_TIME);
-        this.price = price;
-
-        this.mobilePhoneNumber = mobilePhoneNumber;
-    }
+//    public Order(UUID sandwichId, String name, String breadType, BigDecimal price, String mobilePhoneNumber) {
+//        this.sandwichId = sandwichId;
+//        this.name = name;
+//        this.breadType = breadType;
+//        this.creationDate = LocalDateTime.now().format(DateTimeFormatter.ISO_DATE_TIME);
+//        this.price = price;
+//
+//        this.mobilePhoneNumber = mobilePhoneNumber;
+//    }
 
     public UUID getId() {
         return id;
@@ -56,19 +64,19 @@ public class Order {
         this.name = name;
     }
 
-    public String getBreadType() {
+    public BreadType getBreadType() {
         return breadType;
     }
 
-    public void setBreadType(String breadType) {
+    public void setBreadType(BreadType breadType) {
         this.breadType = breadType;
     }
 
-    public String getCreationDate() {
+    public LocalDateTime getCreationDate() {
         return creationDate;
     }
 
-    public void setCreationDate(String creationDate) {
+    public void setCreationDate(LocalDateTime creationDate) {
         this.creationDate = creationDate;
     }
 

@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: net.javacrumbs.json-unit:json-unit-assertj:2.0.3">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.javacrumbs.json-unit/json-unit-assertj/2.0.3/b9f832c92d64cc70a6981720ea079f872c030234/json-unit-assertj-2.0.3.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.javacrumbs.json-unit/json-unit-assertj/2.0.3/97a8b42d18a09f943b8b6e2e5f8a019b78b40c0c/json-unit-assertj-2.0.3-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

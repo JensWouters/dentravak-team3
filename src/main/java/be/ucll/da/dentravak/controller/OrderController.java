@@ -4,6 +4,7 @@ import be.ucll.da.dentravak.domain.Order;
 import be.ucll.da.dentravak.repository.OrderRepository;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,26 +19,28 @@ public class OrderController {
 
     @RequestMapping(value = "/orders", method = RequestMethod.POST)
     public Order addOrder(@RequestBody Order o) {
-        Order order = new Order(o.getSandwichId(), o.getName(), o.getBreadType(), o.getPrice(), o.getMobilePhoneNumber());
+        //Order order = new Order(o.getSandwichId(), o.getName(), o.getBreadType(), o.getPrice(), o.getMobilePhoneNumber());
 
-        return repo.save(order);
+        o.setCreationDate(LocalDateTime.now());
+        return repo.save(o);
     }
 
     @RequestMapping(value="/orders", method = RequestMethod.GET)
-    public List<Order> getOrders(@RequestParam(value = "date", required = false) String creationDate) {
+    public Iterable<Order> getOrders(@RequestParam(value = "date", required = false) String creationDate) {
 
-        if (creationDate == null) {
-            return (List) repo.findAll();
-        } else {
-            List<Order> orders = (List) repo.findAll();
-            List<Order> ordersOnDate = new ArrayList();
-            for (Order o : orders) {
-                if (o.getCreationDate().split("T")[0].equals(creationDate)) {
-                    ordersOnDate.add(o);
-                }
-            }
-            return ordersOnDate;
-        }
+//        if (creationDate == null) {
+//            return (List) repo.findAll();
+//        } else {
+//            List<Order> orders = (List) repo.findAll();
+//            List<Order> ordersOnDate = new ArrayList();
+//            for (Order o : orders) {
+//                if (o.getCreationDate().split("T")[0].equals(creationDate)) {
+//                    ordersOnDate.add(o);
+//                }
+//            }
+//            return ordersOnDate;
+//        }
+        return repo.findAll();
     }
 
 }
