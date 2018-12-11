@@ -66,24 +66,28 @@ function getSandwich(id) {
                 radio1.type = 'radio';
                 radio1.name = 'breadtype';
                 radio1.value='BOTERHAMMEKES';
+                radio1.id = "boterham";
                 let radio1Name = document.createElement('label');
                 radio1Name.innerHTML = '  Boterhammekes';
                 let radio2 = document.createElement('input');
                 radio2.type = 'radio';
                 radio2.name = 'breadtype';
                 radio2.value='TURK_BROOD';
+                radio2.id = "turk";
                 let radio2Name = document.createElement('label');
                 radio2Name.innerHTML = '  Turks brood';
                 let radio3 = document.createElement('input');
                 radio3.type = 'radio';
                 radio3.name = 'breadtype';
-                radio3.value='WRAP';
+                radio3.value='WRAP'
+                radio3.id = "wrap";
                 let radio3Name = document.createElement('label');
                 radio3Name.innerHTML = '  Wrap';
                 let phoneNumberLabel = document.createElement('label');
                 phoneNumberLabel.innerHTML = "Mobile number";
                 let phoneNumber = document.createElement('input');
                 phoneNumber.type="text";
+                phoneNumber.id = "phoneNumber";
 
                 cardTitle.innerHTML = data.name;
                 cardPrice.innerHTML = "€" + data.price.toFixed(2);
@@ -97,7 +101,9 @@ function getSandwich(id) {
                 cardText.classList.add("card-text");
                 cardButton.classList.add("card-link");
 
-                cardButton.addEventListener("click", addOrder(data))
+                cardButton.style.color = 'blue';
+                cardButton.style.cursor = 'pointer';
+                cardButton.onclick = function(){addOrder(data)};
 
                 cardBody.appendChild(cardTitle);
                 cardBody.appendChild(cardPrice);
@@ -130,6 +136,34 @@ function getSandwich(id) {
 }
 
 function addOrder(data) {
+
+    var checked;
+
+    if (document.getElementById("boterham").checked) {
+        checked = document.getElementById("boterham").value;
+    } else if (document.getElementById("turk").checked) {
+        checked = document.getElementById("turk").value;
+    } else {
+        checked = document.getElementById("wrap").value;
+    }
+
+    var phoneNumber = document.getElementById("phoneNumber");
+
+    var order = {"sandwichId": data.id, "name": data.name, "breadType": checked, "price": data.price, "mobilePhoneNumber": phoneNumber};
+
+    /*fetch('http://localhost:8080/orders', {
+        method: 'post',
+        body: $.toJSON(order)
+    }).then(function(response) {
+        return response.json();
+    });*/
+
+    $.ajax({
+        url: "http://localhost:8080/orders",
+        type: "POST",
+        data: "b=" + order,
+        dataType: "json"
+    });
 
 }
 
