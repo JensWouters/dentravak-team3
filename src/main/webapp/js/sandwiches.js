@@ -62,10 +62,12 @@ function getSandwich(id) {
                 let cardPrice =  document.createElement('h6');
                 let cardText =  document.createElement('p');
                 let cardButton =  document.createElement('a');
+                cardButton.id = "orderButton";
                 let radio1 = document.createElement('input');
                 radio1.type = 'radio';
                 radio1.name = 'breadtype';
                 radio1.value='BOTERHAMMEKES';
+                radio1.checked = true;
                 radio1.id = "boterham";
                 let radio1Name = document.createElement('label');
                 radio1Name.innerHTML = '  Boterhammekes';
@@ -84,7 +86,7 @@ function getSandwich(id) {
                 let radio3Name = document.createElement('label');
                 radio3Name.innerHTML = '  Wrap';
                 let phoneNumberLabel = document.createElement('label');
-                phoneNumberLabel.innerHTML = "Mobile number";
+                phoneNumberLabel.innerHTML = "Mobile number (required)";
                 let phoneNumber = document.createElement('input');
                 phoneNumber.type="text";
                 phoneNumber.id = "phoneNumber";
@@ -140,30 +142,34 @@ function addOrder(data) {
     var checked;
 
     if (document.getElementById("boterham").checked) {
-        checked = document.getElementById("boterham").value;
+        checked = document.getElementById("wrap").value;
     } else if (document.getElementById("turk").checked) {
         checked = document.getElementById("turk").value;
     } else {
-        checked = document.getElementById("wrap").value;
+        checked = document.getElementById("boterham").value;
     }
 
-    var phoneNumber = document.getElementById("phoneNumber");
+    var phoneNumber = document.getElementById("phoneNumber").value;
+    if (phoneNumber == null || phoneNumber == "") {
+        alert("Fill in mobile number, please!");
+    } else {
 
-    var order = {"sandwichId": data.id, "name": data.name, "breadType": checked, "price": data.price, "mobilePhoneNumber": phoneNumber};
-
-    /*fetch('http://localhost:8080/orders', {
-        method: 'post',
-        body: $.toJSON(order)
-    }).then(function(response) {
-        return response.json();
-    });*/
-
-    $.ajax({
-        url: "http://localhost:8080/orders",
-        type: "POST",
-        data: "b=" + order,
-        dataType: "json"
-    });
+        fetch('http://localhost:8080/orders', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                "sandwichId": data.id,
+                "name": data.name,
+                "breadType": checked,
+                "price": data.price,
+                "mobilePhoneNumber": phoneNumber
+            })
+        });
+        alert("Your sandwich is being prepared!");
+    }
 
 }
 
