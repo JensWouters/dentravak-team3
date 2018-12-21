@@ -74,7 +74,7 @@ function getSandwich(id) {
                 let radio2 = document.createElement('input');
                 radio2.type = 'radio';
                 radio2.name = 'breadtype';
-                radio2.value='TURK_BROOD';
+                radio2.value='TURKS_BROOD';
                 radio2.id = "turk";
                 let radio2Name = document.createElement('label');
                 radio2Name.innerHTML = '  Turks brood';
@@ -142,11 +142,12 @@ function addOrder(data) {
     var checked;
 
     if (document.getElementById("boterham").checked) {
-        checked = document.getElementById("wrap").value;
-    } else if (document.getElementById("turk").checked) {
+        checked = document.getElementById("boterham").value;
+    }
+    else if (document.getElementById("turk").checked) {
         checked = document.getElementById("turk").value;
     } else {
-        checked = document.getElementById("boterham").value;
+        checked = document.getElementById("wrap").value;
     }
 
     var phoneNumber = document.getElementById("phoneNumber").value;
