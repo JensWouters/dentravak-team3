@@ -40,7 +40,7 @@ services:
   consul:
     image: consul
     restart: unless-stopped
-      ports:
+    ports:
       - "8500:8500"
 
   den-travak:
