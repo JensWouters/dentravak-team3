@@ -49,8 +49,8 @@ services:
     ports:
       - "8123:8080"
 
-  recommendation:
-    image: recommendation-app:0.0.1-SNAPSHOT
-    restart: unless-stopped
-    ports:
-      - "8124:8080"
+#  recommendation:
+#    image: recommendation-app:0.0.1-SNAPSHOT
+#    restart: unless-stopped
+#    ports:
+#      - "8124:8080"
