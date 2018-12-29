@@ -56,6 +56,7 @@ function VisualizeOrder(data){
                 var cell4 = row.insertCell(3);
                 var cell5 = row.insertCell(4);
                 //var cell6 = row.insertCell(5);
+
                 cell1.innerHTML = ordernummer;
                 cell2.innerHTML = order.name;
                 cell3.innerHTML = order.breadType;

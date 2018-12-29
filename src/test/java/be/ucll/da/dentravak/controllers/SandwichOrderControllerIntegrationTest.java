@@ -1,6 +1,6 @@
 package be.ucll.da.dentravak.controllers;
 
-import be.ucll.da.dentravak.Application;
+import java.be.ucll.da.dentravak.Application;
 import be.ucll.da.dentravak.domain.Sandwich;
 import be.ucll.da.dentravak.domain.Order;
 import be.ucll.da.dentravak.model.SandwichTestBuilder;
