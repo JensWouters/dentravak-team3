@@ -26,6 +26,9 @@ services:
       - consul
     ports:
       - 8234:8080
+    labels:
+          - "traefik.port=8080"
+          - "traefik.frontend.rule=PathPrefix:/den-travak/"
 
   recommendation:
     image: recommendation-app:0.0.1-SNAPSHOT
