@@ -38,7 +38,7 @@ function VisualizeOrder(data){
 
 
             var today = getToday();
-
+    console.log(orderDate.toLocaleDateString());
             if(orderDate.toLocaleDateString() === today) {
 
                 var ordernummer = i;
