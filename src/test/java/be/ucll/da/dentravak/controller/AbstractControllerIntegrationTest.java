@@ -1,4 +1,4 @@
-package be.ucll.da.dentravak.controllers;
+package be.ucll.da.dentravak.controller;
 
 import be.ucll.da.dentravak.Application;
 import com.fasterxml.jackson.core.JsonProcessingException;

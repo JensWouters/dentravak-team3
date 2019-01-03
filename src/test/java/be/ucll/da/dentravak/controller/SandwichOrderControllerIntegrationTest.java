@@ -1,4 +1,4 @@
-package be.ucll.da.dentravak.controllers;
+package be.ucll.da.dentravak.controller;
 
 import be.ucll.da.dentravak.Application;
 import be.ucll.da.dentravak.domain.Sandwich;
@@ -54,7 +54,12 @@ public class SandwichOrderControllerIntegrationTest extends AbstractControllerIn
 
     @Test
     public void testGetSandwichOrders_WithOrdersSaved_ReturnsListWithOrders() throws JSONException {
-        throw new RuntimeException("Implement this test and then the production code");
+        Order sandwichOrder = aSandwichOrder().forSandwich(savedSandwich).withBreadType(Order.BreadType.BOTERHAMMEKES).withMobilePhoneNumber("0487/123456").build();
+        String actualSandwiches = httpPost("/orders", sandwichOrder);
+        String expectedSandwiches = httpGet("/orders");
+
+        assertThatJson(expectedSandwiches).isArray();
+
     }
 
 }

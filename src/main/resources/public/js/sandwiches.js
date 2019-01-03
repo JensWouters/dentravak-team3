@@ -15,6 +15,7 @@ function getSandwiches () {
                 let cardText =  document.createElement('p');
                 let cardButton =  document.createElement('a');
 
+
                 cardTitle.innerHTML = sandwich.name;
                 cardPrice.innerHTML = "€" + sandwich.price.toFixed(2);
                 cardText.innerHTML = sandwich.ingredients;
@@ -26,13 +27,16 @@ function getSandwiches () {
                 cardPrice.classList.add("text-muted");
                 cardText.classList.add("card-text");
                 cardButton.classList.add("card-link");
-
                 cardButton.href = "checkout.html?id=" + sandwich.id;
+
+
+
 
                 cardBody.appendChild(cardTitle);
                 cardBody.appendChild(cardPrice);
                 cardBody.appendChild(cardText);
                 cardBody.appendChild(cardButton);
+
 
                 cardBody.classList.add("card-body");
                 card.appendChild(cardBody);
@@ -62,6 +66,8 @@ function getSandwich(id) {
                 let cardPrice =  document.createElement('h6');
                 let cardText =  document.createElement('p');
                 let cardButton =  document.createElement('a');
+                let cardRating = document.createElement('input');
+
                 cardButton.id = "orderButton";
                 let radio1 = document.createElement('input');
                 radio1.type = 'radio';
@@ -74,7 +80,7 @@ function getSandwich(id) {
                 let radio2 = document.createElement('input');
                 radio2.type = 'radio';
                 radio2.name = 'breadtype';
-                radio2.value='TURK_BROOD';
+                radio2.value='TURKS_BROOD';
                 radio2.id = "turk";
                 let radio2Name = document.createElement('label');
                 radio2Name.innerHTML = '  Turks brood';
@@ -106,8 +112,17 @@ function getSandwich(id) {
                 cardButton.style.color = 'blue';
                 cardButton.style.cursor = 'pointer';
                 cardButton.onclick = function(){addOrder(data)};
+                cardRating.type = "number";
+                cardRating.class = "score";
+                cardRating.name = "score";
+                cardRating.min = "1";
+                cardRating.max = "5";
+                cardRating.value = "5";
+                cardRating.style.float = "right";
+                cardRating.style.width = "30px";
 
                 cardBody.appendChild(cardTitle);
+                cardBody.appendChild(cardRating);
                 cardBody.appendChild(cardPrice);
                 cardBody.appendChild(cardText);
                 cardBody.appendChild(radio1);
@@ -142,11 +157,12 @@ function addOrder(data) {
     var checked;
 
     if (document.getElementById("boterham").checked) {
-        checked = document.getElementById("wrap").value;
-    } else if (document.getElementById("turk").checked) {
+        checked = document.getElementById("boterham").value;
+    }
+    else if (document.getElementById("turk").checked) {
         checked = document.getElementById("turk").value;
     } else {
-        checked = document.getElementById("boterham").value;
+        checked = document.getElementById("wrap").value;
     }
 
     var phoneNumber = document.getElementById("phoneNumber").value;

@@ -7,10 +7,6 @@
     <facet type="web" name="Web">
       <configuration>
         <webroots />
-        <sourceRoots>
-          <root url="file://$MODULE_DIR$/../../src/main/java" />
-          <root url="file://$MODULE_DIR$/../../src/main/resources" />
-        </sourceRoots>
       </configuration>
     </facet>
   </component>
@@ -19,24 +15,25 @@
     <exclude-output />
     <content url="file://$MODULE_DIR$/../../src/main">
       <sourceFolder url="file://$MODULE_DIR$/../../src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../src/main/resources" type="java-resource" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-starter-web:2.0.5.RELEASE" level="project" />
-    <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-starter-data-jpa:2.0.5.RELEASE" level="project" />
-    <orderEntry type="library" name="Gradle: com.h2database:h2:1.4.197" level="project" />
-    <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-starter-json:2.0.5.RELEASE" level="project" />
+    <orderEntry type="library" name="Gradle: ajk.gradle.consul:gradle-consul-plugin:0.1.10" level="project" />
+    <orderEntry type="library" name="Gradle: com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.9.6" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.yaml:snakeyaml:1.19" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-starter-aop:2.0.5.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-starter-jdbc:2.0.5.RELEASE" level="project" />
-    <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-starter:2.0.5.RELEASE" level="project" />
-    <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-starter-tomcat:2.0.5.RELEASE" level="project" />
+    <orderEntry type="library" name="Gradle: org.springframework:spring-aspects:5.0.9.RELEASE" level="project" />
+    <orderEntry type="library" name="Gradle: com.google.protobuf:protobuf-java:3.6.1" level="project" />
     <orderEntry type="library" name="Gradle: org.hibernate.validator:hibernate-validator:6.0.12.Final" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework:spring-webmvc:5.0.9.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework:spring-web:5.0.9.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: javax.transaction:javax.transaction-api:1.2" level="project" />
     <orderEntry type="library" name="Gradle: org.hibernate:hibernate-core:5.2.17.Final" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework.data:spring-data-jpa:2.0.10.RELEASE" level="project" />
-    <orderEntry type="library" name="Gradle: org.springframework:spring-aspects:5.0.9.RELEASE" level="project" />
+    <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-starter:2.0.5.RELEASE" level="project" />
+    <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-starter-tomcat:2.0.5.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-autoconfigure:2.0.5.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot:2.0.5.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-starter-logging:2.0.5.RELEASE" level="project" />
@@ -50,9 +47,9 @@
     <orderEntry type="library" name="Gradle: org.springframework:spring-beans:5.0.9.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework:spring-expression:5.0.9.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework:spring-core:5.0.9.RELEASE" level="project" />
-    <orderEntry type="library" name="Gradle: org.yaml:snakeyaml:1.19" level="project" />
     <orderEntry type="library" name="Gradle: com.fasterxml.jackson.datatype:jackson-datatype-jdk8:2.9.6" level="project" />
-    <orderEntry type="library" name="Gradle: com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.9.6" level="project" />
+    <orderEntry type="library" name="Gradle: com.h2database:h2:1.4.197" level="project" />
+    <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-starter-json:2.0.5.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: com.fasterxml.jackson.module:jackson-module-parameter-names:2.9.6" level="project" />
     <orderEntry type="library" name="Gradle: com.fasterxml.jackson.core:jackson-databind:2.9.6" level="project" />
     <orderEntry type="library" name="Gradle: org.apache.tomcat.embed:tomcat-embed-websocket:8.5.34" level="project" />
@@ -77,6 +74,9 @@
     <orderEntry type="library" name="Gradle: com.fasterxml.jackson.core:jackson-annotations:2.9.0" level="project" />
     <orderEntry type="library" name="Gradle: com.fasterxml.jackson.core:jackson-core:2.9.6" level="project" />
     <orderEntry type="library" name="Gradle: ch.qos.logback:logback-core:1.2.3" level="project" />
+    <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-starter-web:2.0.5.RELEASE" level="project" />
+    <orderEntry type="library" name="Gradle: mysql:mysql-connector-java:8.0.13" level="project" />
     <orderEntry type="library" name="Gradle: org.apache.logging.log4j:log4j-api:2.10.0" level="project" />
+    <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-starter-data-jpa:2.0.5.RELEASE" level="project" />
   </component>
 </module>
