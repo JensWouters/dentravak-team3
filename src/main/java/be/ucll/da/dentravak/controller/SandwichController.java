@@ -31,7 +31,7 @@ public class SandwichController {
         this.repo = repo;
     }
 
-    @RequestMapping("/den-travak/sandwiches")
+    @RequestMapping("/sandwiches")
     public Iterable<Sandwich> sandwiches() {
         return repo.findAll();
 //        try {
@@ -54,12 +54,12 @@ public class SandwichController {
 //
 //        return (List) repo.findAll();
 //    }
-    @RequestMapping(value = "/den-travak/sandwiches/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/sandwiches/{id}", method = RequestMethod.GET)
     public Sandwich getSandwichById(@PathVariable(value="id") UUID id) {
         return repo.findById(id).get();
     }
 
-    @RequestMapping(value = "/den-travak/sandwiches", method = RequestMethod.POST)
+    @RequestMapping(value = "/sandwiches", method = RequestMethod.POST)
     public Sandwich addSandwich(@RequestBody Sandwich s) {
        Sandwich sandwich =  new Sandwich(s.getName(), s.getIngredients(), s.getPrice());
 
@@ -67,7 +67,7 @@ public class SandwichController {
 
     }
 
-    @RequestMapping(value = "/den-travak/sandwiches/{id}", method = RequestMethod.PUT)
+    @RequestMapping(value = "/sandwiches/{id}", method = RequestMethod.PUT)
     public Sandwich updateSandwich(@PathVariable(value="id") UUID id, @RequestBody Sandwich newSandwich) {
         Optional<Sandwich> s = repo.findById(id);
             s.get().setName(newSandwich.getName());

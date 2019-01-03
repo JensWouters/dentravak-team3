@@ -1,7 +1,7 @@
 function getSandwiches () {
 
     const div = document.getElementById('sandwiches');
-    const url = 'http://localhost:8080/sandwiches';
+    const url = 'http://193.191.177.8:10368/den-travak/sandwiches';
 
     fetch(url)
         .then((resp) => resp.json())
@@ -52,7 +52,7 @@ function getSandwiches () {
 function getSandwich(id) {
 
     const div = document.getElementById('sandwich');
-    const url = 'http://localhost:8080/sandwiches/' + id;
+    const url = 'http://193.191.177.8:10368/den-travak/sandwiches/' + id;
 
     fetch(url)
         .then((resp) => resp.json())
@@ -170,7 +170,7 @@ function addOrder(data) {
         alert("Fill in mobile number, please!");
     } else {
 
-        fetch('http://localhost:8080/orders', {
+        fetch('http://193.191.177.8:10368/den-travak/orders', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',

@@ -17,7 +17,7 @@ function getToday(){
 
 
 function getAllOrders(){
-    fetch('http://localhost:8080/orders').then(response => response.json())
+    fetch('http://193.191.177.8:10368/den-travak/orders').then(response => response.json())
         .then(data => {
             console.log(data) // Prints result from `response.json()` in getRequest
                 VisualizeOrder(data);
