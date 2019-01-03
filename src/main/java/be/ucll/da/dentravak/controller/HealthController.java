@@ -11,8 +11,7 @@ import javax.inject.Inject;
 @RestController
 public class HealthController {
 
-    @Inject
-    private DiscoveryClient discoveryClient;
+
 
     @GetMapping("/health-check")
     public ResponseEntity<String> myCustomCheck() {
