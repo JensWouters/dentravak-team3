@@ -13,5 +13,5 @@ services:
   consul:
     image: consul
     restart: unless-stopped
-      ports:
-        - 8500:8500
+    ports:
+      - "8500:8500"
