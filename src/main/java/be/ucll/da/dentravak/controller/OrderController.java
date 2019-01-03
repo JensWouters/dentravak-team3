@@ -5,8 +5,6 @@ import be.ucll.da.dentravak.repository.OrderRepository;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
 @RestController
 public class OrderController {
@@ -17,7 +15,7 @@ public class OrderController {
         this.repo = repo;
     }
 
-    @RequestMapping(value = "/orders", method = RequestMethod.POST)
+    @RequestMapping(value = "/den-travak/orders", method = RequestMethod.POST)
     public Order addOrder(@RequestBody Order o) {
         //Order order = new Order(o.getSandwichId(), o.getName(), o.getBreadType(), o.getPrice(), o.getMobilePhoneNumber());
 
@@ -25,7 +23,7 @@ public class OrderController {
         return repo.save(o);
     }
 
-    @RequestMapping(value="/orders", method = RequestMethod.GET)
+    @RequestMapping(value="/den-travak/orders", method = RequestMethod.GET)
     public Iterable<Order> getOrders(@RequestParam(value = "date", required = false) String creationDate) {
 
 //        if (creationDate == null) {

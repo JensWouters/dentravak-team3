@@ -8,13 +8,12 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
+import javax.inject.Inject;
 import javax.naming.ServiceUnavailableException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Optional;
 import java.util.UUID;
-
-import javax.inject.Inject;
 
 @RestController
 public class SandwichController {
@@ -32,7 +31,7 @@ public class SandwichController {
         this.repo = repo;
     }
 
-    @RequestMapping("/sandwiches")
+    @RequestMapping("/den-travak/sandwiches")
     public Iterable<Sandwich> sandwiches() {
         return repo.findAll();
 //        try {
@@ -55,12 +54,12 @@ public class SandwichController {
 //
 //        return (List) repo.findAll();
 //    }
-    @RequestMapping(value = "/sandwiches/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/den-travak/sandwiches/{id}", method = RequestMethod.GET)
     public Sandwich getSandwichById(@PathVariable(value="id") UUID id) {
         return repo.findById(id).get();
     }
 
-    @RequestMapping(value = "/sandwiches", method = RequestMethod.POST)
+    @RequestMapping(value = "/den-travak/sandwiches", method = RequestMethod.POST)
     public Sandwich addSandwich(@RequestBody Sandwich s) {
        Sandwich sandwich =  new Sandwich(s.getName(), s.getIngredients(), s.getPrice());
 
@@ -68,7 +67,7 @@ public class SandwichController {
 
     }
 
-    @RequestMapping(value = "/sandwiches/{id}", method = RequestMethod.PUT)
+    @RequestMapping(value = "/den-travak/sandwiches/{id}", method = RequestMethod.PUT)
     public Sandwich updateSandwich(@PathVariable(value="id") UUID id, @RequestBody Sandwich newSandwich) {
         Optional<Sandwich> s = repo.findById(id);
             s.get().setName(newSandwich.getName());
