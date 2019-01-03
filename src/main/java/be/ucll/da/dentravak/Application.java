@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Bean;
 
 import java.math.BigDecimal;
 
+//@EnableDiscoveryClient
 @SpringBootApplication
 public class Application {
 
