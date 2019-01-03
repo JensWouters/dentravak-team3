@@ -5,14 +5,6 @@ function getToday(){
     var mm = today.getMonth()+1; //January is 0!
     var yyyy = today.getFullYear();
 
-    if(dd<10) {
-        dd = '0'+dd
-    }
-
-    if(mm<10) {
-        mm = '0'+mm
-    }
-
     today = dd + '-' + mm + '-' + yyyy;
     var h1 = document.getElementById('date');
     h1.innerHTML = today;
@@ -44,7 +36,7 @@ function VisualizeOrder(data){
 
 
             var today = getToday();
-
+    console.log(orderDate.toLocaleDateString());
             if(orderDate.toLocaleDateString() === today) {
 
                 var ordernummer = i;
