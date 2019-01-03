@@ -5,7 +5,7 @@ services:
     image: traefik
     command: --api --docker # Enables the web UI and tells Træfik to listen to docker
     ports:
-      - 8080:80    # The HTTP port
+      - "8080:80"     # The HTTP port
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
 
@@ -27,8 +27,8 @@ services:
     ports:
       - 8234:8080
     labels:
-          - "traefik.port=8080"
-          - "traefik.frontend.rule=PathPrefix:/den-travak/"
+      - "traefik.port=8080"
+      - "traefik.frontend.rule=PathPrefix:/den-travak/"
 
   recommendation:
     image: recommendation-app:0.0.1-SNAPSHOT
