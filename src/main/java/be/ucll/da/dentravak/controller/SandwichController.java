@@ -3,6 +3,7 @@ package be.ucll.da.dentravak.controller;
 import be.ucll.da.dentravak.domain.Sandwich;
 import be.ucll.da.dentravak.model.SandwichPreferences;
 import be.ucll.da.dentravak.repository.SandwichRepository;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
@@ -13,15 +14,18 @@ import java.net.URISyntaxException;
 import java.util.Optional;
 import java.util.UUID;
 
-//import javax.inject.Inject;
+import javax.inject.Inject;
 
 @RestController
 public class SandwichController {
 
-    //@Inject
+    @Inject
+    private DiscoveryClient discoveryClient;
+
+    @Inject
     private SandwichRepository repo;
 
-    //@Inject
+    @Inject
     private RestTemplate restTemplate;
 
     public SandwichController(SandwichRepository repo ) {
