@@ -30,18 +30,13 @@ $(document).ready(function() {
                 .split(tmpRowDelim).join(rowDelim)
                 .split(tmpColDelim).join(colDelim) + '"';
 
-        // Deliberate 'false', see comment below
+
         if (false && window.navigator.msSaveBlob) {
 
             var blob = new Blob([decodeURIComponent(csv)], {
                 type: 'text/csv;charset=utf8'
             });
 
-            // Crashes in IE 10, IE 11 and Microsoft Edge
-            // See MS Edge Issue #10396033
-            // Hence, the deliberate 'false'
-            // This is here just for completeness
-            // Remove the 'false' at your own risk
             window.navigator.msSaveBlob(blob, filename);
 
         } else if (window.Blob && window.URL) {
@@ -57,7 +52,7 @@ $(document).ready(function() {
                     'href': csvUrl
                 });
         } else {
-            // Data URI
+
             var csvData = 'data:application/csv;charset=utf-8,' + encodeURIComponent(csv);
 
             $(this)
@@ -69,17 +64,17 @@ $(document).ready(function() {
         }
     }
 
-    // This must be a hyperlink
+
     $(".export").on('click', function(event) {
         // CSV
-        var args = [$('#orders>table'), 'export.csv'];
+        var yesOrNo = confirm("Print all orders?");
+        if(yesOrNo){
+            var args = [$('#orders>table'), 'export.csv'];
+            exportTableToCSV.apply(this, args);
+        }
+        else{
+            return false;
+        }
 
-       exportTableToCSV.apply(this, args);
-
-
-
-
-        // If CSV, don't do event.preventDefault() or return false
-        // We actually need this to be a typical hyperlink
     });
 });
