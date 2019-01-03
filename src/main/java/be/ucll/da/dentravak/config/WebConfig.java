@@ -1,3 +1,4 @@
+
 package be.ucll.da.dentravak.config;
 
 import org.springframework.context.annotation.Bean;
