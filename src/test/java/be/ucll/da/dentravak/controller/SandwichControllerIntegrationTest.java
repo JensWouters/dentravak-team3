@@ -1,4 +1,4 @@
-package be.ucll.da.dentravak.controllers;
+package be.ucll.da.dentravak.controller;
 
 import be.ucll.da.dentravak.Application;
 import be.ucll.da.dentravak.domain.Sandwich;
@@ -51,6 +51,7 @@ public class SandwichControllerIntegrationTest extends AbstractControllerIntegra
 
     @Test
     public void testGetSandwiches_WithSavedSandwiches_ListWithSavedSandwich() throws JSONException {
-        throw new RuntimeException("Implement this test and then the production code");
+        String actualSandwiches = httpGet("/sandwiches");
+
     }
 }
