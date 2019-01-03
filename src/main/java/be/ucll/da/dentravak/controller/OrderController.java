@@ -2,14 +2,18 @@ package be.ucll.da.dentravak.controller;
 
 import be.ucll.da.dentravak.domain.Order;
 import be.ucll.da.dentravak.repository.OrderRepository;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.*;
 
+import javax.inject.Inject;
 import java.time.LocalDateTime;
 
 @RestController
 public class OrderController {
-
+    @Inject
     private OrderRepository repo;
+    @Inject
+    private DiscoveryClient discoveryClient;
 
     public OrderController(OrderRepository repo) {
         this.repo = repo;
