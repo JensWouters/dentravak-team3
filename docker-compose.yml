@@ -5,7 +5,7 @@ services:
     image: traefik
     command: --api --docker # Enables the web UI and tells Træfik to listen to docker
     ports:
-      - "8080:80"     # The HTTP port
+      - 8080:80    # The HTTP port
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
 
@@ -13,7 +13,7 @@ services:
     image: consul
     restart: unless-stopped
     ports:
-      - "8500:8500"
+      - 8500:8500
     labels:
       - "traefik.port=8500"
       - "traefik.frontend.rule=PathPrefixStrip:/consul/"
