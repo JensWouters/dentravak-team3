@@ -112,7 +112,10 @@ function getSandwich(id) {
                 cardButton.style.color = 'blue';
                 cardButton.style.cursor = 'pointer';
                 cardButton.onclick = function(){addOrder(data)};
+
                 cardRating.type = "number";
+                cardRating.step = "0.01";
+                cardRating.id = "rating";
                 cardRating.class = "score";
                 cardRating.name = "score";
                 cardRating.min = "1";
@@ -155,6 +158,7 @@ function getSandwich(id) {
 function addOrder(data) {
 
     var checked;
+    var rating = document.getElementById("rating").value;
 
     if (document.getElementById("boterham").checked) {
         checked = document.getElementById("boterham").value;
@@ -184,6 +188,20 @@ function addOrder(data) {
                 "mobilePhoneNumber": phoneNumber
             })
         });
+        fetch('http://193.191.177.8:10368/recommendation/recommend', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                "emailAddress": "obelix@ucll.be",
+                "sandwichId": data.id,
+                "rating": rating
+
+            })
+        });
+
         alert("Your sandwich is being prepared!");
     }
 

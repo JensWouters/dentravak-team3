@@ -90,7 +90,7 @@ public class SandwichController {
 
     public Optional<URI> recommendationServiceUrl() {
         try {
-            return Optional.of(new URI("http://localhost:8081"));
+            return Optional.of(new URI("http://193.191.177.8:10368/recommendation/"));
         } catch (URISyntaxException e) {
             throw new RuntimeException(e);
         }
