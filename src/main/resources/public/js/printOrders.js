@@ -71,10 +71,16 @@ $(document).ready(function() {
         if(yesOrNo){
             var args = [$('#orders>table'), 'export.csv'];
             exportTableToCSV.apply(this, args);
+            var printed = document.getElementById("printed");
+            var ordersTableLength = document.getElementById("ordersTable");
+            printed.innerHTML = ordersTableLength.children.length;
+            printed.style.fontSize = 0;
         }
         else{
             return false;
         }
+
+
 
     });
 });

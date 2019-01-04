@@ -31,6 +31,7 @@ function VisualizeOrder(data){
     var div = document.getElementById('orders');
     var ordersdiv = document.getElementById('ordersTable');
     ordersdiv.innerHTML = "";
+    var p = document.getElementById("printed").innerHTML;
 
     for (var i = 0; i!= data.length; i++){
             var order = data[i];
@@ -49,17 +50,26 @@ function VisualizeOrder(data){
                 var cell3 = row.insertCell(2);
                 var cell4 = row.insertCell(3);
                 var cell5 = row.insertCell(4);
-                //var cell6 = row.insertCell(5);
+                var cell6 = row.insertCell(5);
 
                 cell1.innerHTML = ordernummer;
                 cell2.innerHTML = order.name;
                 cell3.innerHTML = order.breadType;
                 cell4.innerHTML = order.price;
                 cell5.innerHTML = order.mobilePhoneNumber;
+                if(ordernummer <= p){
+                    cell6.innerHTML = "true";
+                    cell6.style.color = "white";
+                    cell6.style.backgroundColor = "green";
+                }
+                else{
+                    cell6.innerHTML = "false";
+                    cell6.style.color = "white";
+                    cell6.style.backgroundColor = "red";
+                }
 
-                ;
 
-        }
+            }
 
 
     }
