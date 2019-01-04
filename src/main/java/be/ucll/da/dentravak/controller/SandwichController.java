@@ -88,18 +88,18 @@ public class SandwichController {
                 .getBody();
     }
 
-    public Optional<URI> recommendationServiceUrl() {
+   /* public Optional<URI> recommendationServiceUrl() {
         try {
             return Optional.of(new URI("http://193.191.177.8:10368/recommendation/"));
         } catch (URISyntaxException e) {
             throw new RuntimeException(e);
         }
-    }
+    }*/
 
-//    public Optional<URI> recommendationServiceUrl() {
-//        return discoveryClient.getInstances("recommendation")
-//                .stream()
-//                .map(si -> si.getUri())
-//                .findFirst();
-//    }
+    public Optional<URI> recommendationServiceUrl() {
+        return discoveryClient.getInstances("recommendation")
+                .stream()
+                .map(si -> si.getUri())
+                .findFirst();
+    }
 }

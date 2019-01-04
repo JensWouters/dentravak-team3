@@ -45,7 +45,7 @@ function VisualizeOrder(data){
                 var ordernummer = i;
                 ordernummer += 1;
                 var row = ordersdiv.insertRow(i);
-                ordersdiv.row
+
                 var cell1 = row.insertCell(0);
                 var cell2 = row.insertCell(1);
                 var cell3 = row.insertCell(2);

@@ -115,6 +115,7 @@ function getSandwich(id) {
 
                 cardRating.type = "number";
                 cardRating.step = "0.01";
+
                 cardRating.id = "rating";
                 cardRating.class = "score";
                 cardRating.name = "score";
@@ -122,7 +123,7 @@ function getSandwich(id) {
                 cardRating.max = "5";
                 cardRating.value = "5";
                 cardRating.style.float = "right";
-                cardRating.style.width = "30px";
+                cardRating.style.width = "100px";
 
                 cardBody.appendChild(cardTitle);
                 cardBody.appendChild(cardRating);
@@ -188,7 +189,7 @@ function addOrder(data) {
                 "mobilePhoneNumber": phoneNumber
             })
         });
-        fetch('http://193.191.177.8:10368/recommendation/recommend', {
+        /*fetch('http://193.191.177.8:10368/recommendation/recommend', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -200,7 +201,7 @@ function addOrder(data) {
                 "rating": rating
 
             })
-        });
+        });*/
 
         alert("Your sandwich is being prepared!");
     }
