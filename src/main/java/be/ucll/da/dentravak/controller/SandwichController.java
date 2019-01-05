@@ -105,6 +105,8 @@ public class SandwichController {
     }
     public List<Sandwich> sortByPreferences(SandwichPreferences preferences) {
         List<Sandwich> allSandwiches = repo.findAll();
+        System.out.println(preferences);
+        System.out.println(allSandwiches.size());
         Collections.sort(allSandwiches, Comparator.comparing((Sandwich sandwich) -> rating(preferences, sandwich)).reversed());
         //Collections.sort(allSandwiches, (Sandwich s1, Sandwich s2) -> rating(preferences, s2).compareTo(rating(preferences, s1)));
         return allSandwiches;
