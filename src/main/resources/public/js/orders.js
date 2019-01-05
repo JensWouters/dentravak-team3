@@ -54,8 +54,7 @@ function VisualizeOrder(data){
                 var cell6 = row.insertCell(5);
 
 
-                cell1.innerHTML = order.id;
-                cell1.className = "orderId";
+                cell1.innerHTML = ordernummer;
                 cell2.innerHTML = order.name;
                 cell3.innerHTML = order.breadType;
                 cell4.innerHTML = order.price;

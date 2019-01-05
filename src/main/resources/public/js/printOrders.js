@@ -76,10 +76,11 @@ $(document).ready(function() {
             var dd = today.getDate();
             var mm = today.getMonth()+1; //January is 0!
             var yyyy = today.getFullYear();
+            var todayString = yyyy + "-" + mm + "-" + dd;
 
 
             var orders = document.getElementById("ordersTable");
-            fetch('http://193.191.177.8:10368/den-travak/orders' ).then(response => response.json())
+            fetch('http://193.191.177.8:10368/den-travak/orders?date=' + todayString ).then(response => response.json())
                 .then(data => {
 
                     /*for (var i = 0; i < orders.children.length; i++) {
