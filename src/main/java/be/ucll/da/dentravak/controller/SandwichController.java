@@ -12,6 +12,8 @@ import javax.inject.Inject;
 import javax.naming.ServiceUnavailableException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.Collections;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -32,16 +34,15 @@ public class SandwichController {
     }
 
     @RequestMapping("/sandwiches")
-    public Iterable<Sandwich> sandwiches() {
-        return repo.findAll();
-//        try {
-//            SandwichPreferences preferences = getPreferences("ronald.dehuysser@ucll.be");
-//            //TODO: sort allSandwiches by float in preferences
-//            Iterable<Sandwich> allSandwiches = repo.findAll();
-//            return allSandwiches;
-//        } catch (ServiceUnavailableException e) {
-//            return repo.findAll();
-//        }
+    public List<Sandwich> sandwiches() {
+        try {
+            SandwichPreferences preferences = getPreferences("ronald.dehuysser@ucll.be");
+            //TODO: sort allSandwiches by float in preferences
+            List<Sandwich> allSandwiches = (List) repo.findAll();
+            return sortByPreferences(preferences, allSandwiches);
+        } catch (ServiceUnavailableException e) {
+            return (List) repo.findAll();
+        }
     }
 
 //    @RequestMapping("/sandwiches")
@@ -101,5 +102,13 @@ public class SandwichController {
                 .stream()
                 .map(si -> si.getUri())
                 .findFirst();
+    }
+    public List<Sandwich> sortByPreferences(SandwichPreferences preferences, List<Sandwich> allSandwiches) {
+        Collections.sort(allSandwiches, (Sandwich s1, Sandwich s2) -> rating(preferences, s2).compareTo(rating(preferences, s1)));
+        return allSandwiches;
+    }
+
+    private Float rating(SandwichPreferences preferences, Sandwich s2) {
+        return preferences.getRatingForSandwich(s2.getId());
     }
 }
