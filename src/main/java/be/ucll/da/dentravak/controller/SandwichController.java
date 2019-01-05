@@ -11,10 +11,7 @@ import org.springframework.web.client.RestTemplate;
 import javax.inject.Inject;
 import javax.naming.ServiceUnavailableException;
 import java.net.URI;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 
 @RestController
 public class SandwichController {
@@ -106,7 +103,7 @@ public class SandwichController {
                 .findFirst();
     }
     public List<Sandwich> sortByPreferences(SandwichPreferences preferences, List<Sandwich> allSandwiches) {
-        Collections.sort(allSandwiches, (Sandwich s1, Sandwich s2) -> rating(preferences, s2).compareTo(rating(preferences, s1)));
+        Collections.sort(allSandwiches, Comparator.comparing((Sandwich sandwich) -> rating(preferences, sandwich)).reversed());
         return allSandwiches;
     }
 
