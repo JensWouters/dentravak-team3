@@ -35,7 +35,7 @@ public class SandwichController {
     @RequestMapping("/sandwiches")
     public List<Sandwich> sandwiches() {
 
-        /*try {
+        try {
             SandwichPreferences preferences = getPreferences("ronald.dehuysser@ucll.be");
             //TODO: sort allSandwiches by float in preferences
             List<Sandwich> allSandwiches =  repo.findAll();
@@ -44,8 +44,7 @@ public class SandwichController {
             return allSandwiches;
         } catch (ServiceUnavailableException e) {
             return repo.findAll();
-        }*/
-        return repo.findAll();
+        }
     }
 
 //    @RequestMapping("/sandwiches")
