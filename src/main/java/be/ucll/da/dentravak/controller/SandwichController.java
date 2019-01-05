@@ -112,7 +112,10 @@ public class SandwichController {
         return allSandwiches;
     }
 
-    private Float rating(SandwichPreferences preferences, Sandwich s2) {
-        return preferences.getRatingForSandwich(s2.getId());
+    private Float rating(SandwichPreferences preferences, Sandwich sandwich) {
+        if (preferences.getRatingForSandwich(sandwich.getId()) == null) {
+            return Float.parseFloat("0");
+        }
+        return preferences.getRatingForSandwich(sandwich.getId());
     }
 }
