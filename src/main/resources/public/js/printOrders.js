@@ -75,7 +75,7 @@ $(document).ready(function() {
 
             var orders = document.getElementById("ordersTable");
             for(var i = 0; i < orders.children.length; i++) {
-                var id = document.getElementsByClassName("orderId")[i];
+                var id = document.getElementsByClassName("orderId")[i].innerHTML;
 
                 fetch('http://193.191.177.8:10368/den-travak/orders/' + id, {
                     method: 'PUT',
