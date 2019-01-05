@@ -119,7 +119,7 @@ function getSandwich(id) {
 
                 cardRating.type = "number";
                 cardRating.step = "0.01";
-                cardRating.style.display = "hidden";
+                cardRating.style.display = "none";
                 cardRating.id = "rating";
                 cardRating.class = "score";
                 cardRating.name = "score";
@@ -131,7 +131,7 @@ function getSandwich(id) {
 
                 cardRatingButton.id = "cardRatingButton";
                 cardRatingButton.innerHTML = "Rate Sandwich";
-                cardRatingButton.style.display = "hidden";
+                cardRatingButton.style.display = "none";
 
 
                 cardBody.appendChild(cardTitle);
