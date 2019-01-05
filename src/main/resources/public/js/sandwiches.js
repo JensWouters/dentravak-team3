@@ -206,7 +206,7 @@ function addOrder(data) {
         var rating = document.getElementById("rating").style.display = "block";
         document.getElementById("cardRatingButton").style.display = "block";
         var button = document.getElementById("cardRatingButton");
-        button.onclick = function(){rateSandwich(data, rating.value)};
+        button.onclick = function(){rateSandwich(data, phoneNumber, rating.value)};
 
 
         alert("Your sandwich is being prepared!");
@@ -214,10 +214,10 @@ function addOrder(data) {
 
 }
 
-function rateSandwich(data, rating){
+function rateSandwich(data, phoneNumber, rating){
     let recommendedItem = {};
-    recommendedItem.emailAddress = data.mobilePhoneNumber;
-    recommendedItem.ratedItem = data.sandwichId;
+    recommendedItem.emailAddress = phoneNumber;
+    recommendedItem.ratedItem = data.id;
     recommendedItem.rating = rating;
 
     console.log(recommendedItem)
