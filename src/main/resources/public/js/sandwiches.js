@@ -202,7 +202,7 @@ function addOrder(data) {
                 "printed": "false"
             })
         });
-        document.getElementById("cardRating").style.display = "block";
+        document.getElementById("rating").style.display = "block";
         document.getElementById("cardRatingButton").style.display = "block";
 
         alert("Your sandwich is being prepared!");
