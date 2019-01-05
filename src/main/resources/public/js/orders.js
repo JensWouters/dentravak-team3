@@ -28,10 +28,8 @@ function getAllOrders(){
 }
 
 function VisualizeOrder(data){
-    var div = document.getElementById('orders');
     var ordersdiv = document.getElementById('ordersTable');
     ordersdiv.innerHTML = "";
-    var p = document.getElementById("printed").innerHTML;
 
     for (var i = 0; i!= data.length; i++){
             var order = data[i];

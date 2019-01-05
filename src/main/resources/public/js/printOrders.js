@@ -79,12 +79,8 @@ $(document).ready(function() {
             var todayString = yyyy + "-" + mm + "-" + dd;
 
 
-            var orders = document.getElementById("ordersTable");
             fetch('http://193.191.177.8:10368/den-travak/orders?date=' + todayString ).then(response => response.json())
                 .then(data => {
-
-                    /*for (var i = 0; i < orders.children.length; i++) {
-                        var id = document.getElementsByClassName("orderId")[i].innerHTML;*/
                     for(var i = 0; i < data.length; i++){
 
                         fetch('http://193.191.177.8:10368/den-travak/orders/' + data[i].id, {
@@ -107,10 +103,7 @@ $(document).ready(function() {
                         });
                     }
                 })
-            /*var printed = document.getElementById("printed");
-            var ordersTableLength = document.getElementById("ordersTable");
-            printed.innerHTML = ordersTableLength.children.length;
-            printed.style.fontSize = 0;*/
+
         }
         else{
             return false;

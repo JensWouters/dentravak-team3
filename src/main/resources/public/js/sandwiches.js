@@ -67,6 +67,10 @@ function getSandwich(id) {
                 let cardText =  document.createElement('p');
                 let cardButton =  document.createElement('a');
                 let cardRating = document.createElement('input');
+                let cardRatingButton = document.createElement('a');
+
+
+
 
                 cardButton.id = "orderButton";
                 let radio1 = document.createElement('input');
@@ -115,7 +119,7 @@ function getSandwich(id) {
 
                 cardRating.type = "number";
                 cardRating.step = "0.01";
-
+                cardRating.style.display = "hidden";
                 cardRating.id = "rating";
                 cardRating.class = "score";
                 cardRating.name = "score";
@@ -125,8 +129,13 @@ function getSandwich(id) {
                 cardRating.style.float = "right";
                 cardRating.style.width = "100px";
 
+                cardRatingButton.id = "cardRatingButton";
+                cardRatingButton.innerHTML = "Rate Sandwich";
+                cardRatingButton.style.display = "hidden";
+
+
                 cardBody.appendChild(cardTitle);
-                cardBody.appendChild(cardRating);
+
                 cardBody.appendChild(cardPrice);
                 cardBody.appendChild(cardText);
                 cardBody.appendChild(radio1);
@@ -144,6 +153,8 @@ function getSandwich(id) {
                 cardBody.appendChild(document.createElement('br'));
                 cardBody.appendChild(document.createElement('br'));
                 cardBody.appendChild(cardButton);
+                cardBody.appendChild(cardRating);
+                cardBody.appendChild(cardRatingButton);
 
                 cardBody.classList.add("card-body");
                 card.appendChild(cardBody);
@@ -191,19 +202,8 @@ function addOrder(data) {
                 "printed": "false"
             })
         });
-        /*fetch('http://193.191.177.8:10368/recommendation/recommend', {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                "emailAddress": "obelix@ucll.be",
-                "sandwichId": data.id,
-                "rating": rating
-
-            })
-        });*/
+        document.getElementById("cardRating").style.display = "block";
+        document.getElementById("cardRatingButton").style.display = "block";
 
         alert("Your sandwich is being prepared!");
     }
