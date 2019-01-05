@@ -71,10 +71,15 @@ $(document).ready(function() {
         if(yesOrNo){
             var args = [$('#orders>table'), 'export.csv'];
             exportTableToCSV.apply(this, args);
+            var today = new Date();
+
+            var dd = today.getDate();
+            var mm = today.getMonth()+1; //January is 0!
+            var yyyy = today.getFullYear();
 
 
             var orders = document.getElementById("ordersTable");
-            fetch('http://193.191.177.8:10368/den-travak/orders').then(response => response.json())
+            fetch('http://193.191.177.8:10368/den-travak/orders' ).then(response => response.json())
                 .then(data => {
 
                     /*for (var i = 0; i < orders.children.length; i++) {
@@ -89,8 +94,8 @@ $(document).ready(function() {
                             },
                             body: JSON.stringify({
                                 "id": data[i].id,
-                                "sandwichId": data[i].id,
-                                "name": data[i].sandwichId,
+                                "sandwichId": data[i].sandwichId,
+                                "name": data[i].name,
                                 "breadType": data[i].breadType,
                                 "creationDate": data[i].creationDate,
                                 "price": data[i].price,

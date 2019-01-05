@@ -7,7 +7,11 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.inject.Inject;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 @RestController
 public class OrderController {
@@ -30,20 +34,24 @@ public class OrderController {
 
     @RequestMapping(value="/orders", method = RequestMethod.GET)
     public Iterable<Order> getOrders(@RequestParam(value = "date", required = false) String creationDate) {
+        List<Order> orders;
 
-//        if (creationDate == null) {
-//            return (List) repo.findAll();
-//        } else {
-//            List<Order> orders = (List) repo.findAll();
-//            List<Order> ordersOnDate = new ArrayList();
-//            for (Order o : orders) {
-//                if (o.getCreationDate().split("T")[0].equals(creationDate)) {
-//                    ordersOnDate.add(o);
-//                }
-//            }
-//            return ordersOnDate;
-//        }
-        return repo.findAll();
+        if (creationDate != null && !creationDate.trim().isEmpty()) {
+            orders = new ArrayList<Order>();
+            String[] dateParts = creationDate.split("-");
+
+            for (Order order : repo.findAll()) {
+                if (order.getCreationDate().getYear() == Integer.parseInt(dateParts[0])
+                        && order.getCreationDate().getMonthValue() == Integer.parseInt(dateParts[1])
+                        && order.getCreationDate().getDayOfMonth() == Integer.parseInt(dateParts[2])) {
+                    orders.add(order);
+                }
+            }
+        } else {
+            orders = StreamSupport.stream(repo.findAll().spliterator(), false).collect(Collectors.toList());
+        }
+
+        return orders;
     }
 
     @RequestMapping(value = "/orders/{id}", method = RequestMethod.PUT)
