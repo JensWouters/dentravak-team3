@@ -10,7 +10,7 @@ import java.util.UUID;
 
 public interface SandwichRepository extends CrudRepository<Sandwich, UUID> {
 
-    //Optional<Sandwich> findById(UUID id);
-    List<Sandwich> findAll();
+    Optional<Sandwich> findById(UUID id);
+    //List<Sandwich> findAll();
 
 }
