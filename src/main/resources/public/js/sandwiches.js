@@ -203,10 +203,11 @@ function addOrder(data) {
             })
         });
         document.getElementById("orderButton").style.display = "none";
-        var rating = document.getElementById("rating").style.display = "block";
+        var rating = document.getElementById("rating").value;
+        document.getElementById("rating").style.display = "block";
         document.getElementById("cardRatingButton").style.display = "block";
         var button = document.getElementById("cardRatingButton");
-        button.onclick = function(){rateSandwich(data, phoneNumber, rating.value)};
+        button.onclick = function(){rateSandwich(data, phoneNumber, rating)};
 
 
         alert("Your sandwich is being prepared!");
