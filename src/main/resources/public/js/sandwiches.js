@@ -202,11 +202,36 @@ function addOrder(data) {
                 "printed": "false"
             })
         });
-        document.getElementById("rating").style.display = "block";
-        document.getElementById("cardRatingButton").style.display = "block";
+        document.getElementById("orderButton").style.display = "none";
+        var rating = document.getElementById("rating").style.display = "block";
+        var l = document.getElementById("cardRatingButton").style.display = "block";
+        l.onclick = function(){rateSandwich(data, rating)};
+
 
         alert("Your sandwich is being prepared!");
     }
+
+}
+
+function rateSandwich(data, rating){
+    let recommendedItem = {};
+    recommendedItem.emailAddress = data.mobilePhoneNumber;
+    recommendedItem.ratedItem = data.sandwichId;
+    recommendedItem.rating = rating;
+
+    console.log(recommendedItem)
+
+    fetch('/recommendation/recommend/', {
+        method: "POST", // *GET, POST, PUT, DELETE, etc.
+        mode: "cors", // no-cors, cors, *same-origin
+        cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+        headers: {
+            "Content-Type": "application/json; charset=utf-8",
+        },
+        body: JSON.stringify(recommendedItem),
+    })
+        .then(response => response.json())
+        .then(resAsJson => alert('Thanks for the rating'));
 
 }
 
