@@ -58,7 +58,7 @@ function VisualizeOrder(data){
                 cell3.innerHTML = order.breadType;
                 cell4.innerHTML = order.price;
                 cell5.innerHTML = order.mobilePhoneNumber;
-                if(ordernummer <= p){
+                if(order.printed){
                     cell6.innerHTML = "true";
                     cell6.style.color = "white";
                     cell6.style.backgroundColor = "green";
