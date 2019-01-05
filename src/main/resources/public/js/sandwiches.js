@@ -7,6 +7,7 @@ function getSandwiches () {
         .then((resp) => resp.json())
         .then(function(data) {
             let sandwiches = data;
+            console.log(sandwiches);
             return sandwiches.map(function(sandwich) {
                 let card =  document.createElement('div');
                 let cardBody =  document.createElement('div');
