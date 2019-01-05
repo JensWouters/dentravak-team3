@@ -188,7 +188,7 @@ function addOrder(data) {
                 "breadType": checked,
                 "price": data.price,
                 "mobilePhoneNumber": phoneNumber,
-                "printed": "true"
+                "printed": "false"
             })
         });
         /*fetch('http://193.191.177.8:10368/recommendation/recommend', {

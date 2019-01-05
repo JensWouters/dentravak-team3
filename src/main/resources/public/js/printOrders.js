@@ -83,6 +83,9 @@ $(document).ready(function() {
                         'Accept': 'application/json',
                         'Content-Type': 'application/json'
                     },
+                    body: JSON.stringify({
+
+                    }),
                 });
             }
             /*var printed = document.getElementById("printed");
