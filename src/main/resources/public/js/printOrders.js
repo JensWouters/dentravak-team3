@@ -72,13 +72,19 @@ $(document).ready(function() {
             var args = [$('#orders>table'), 'export.csv'];
             exportTableToCSV.apply(this, args);
 
-            fetch('http://193.191.177.8:10368/den-travak/orders', {
-                method: 'PUT',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-            });
+
+            var orders = document.getElementById("ordersTable");
+            for(var i = 0; i < orders.children.length; i++) {
+                var id = document.getElementsByClassName("orderId")[i];
+
+                fetch('http://193.191.177.8:10368/den-travak/orders/' + id, {
+                    method: 'PUT',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                });
+            }
             /*var printed = document.getElementById("printed");
             var ordersTableLength = document.getElementById("ordersTable");
             printed.innerHTML = ordersTableLength.children.length;

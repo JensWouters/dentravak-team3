@@ -27,7 +27,7 @@ public class Order {
     private LocalDateTime creationDate;
     private BigDecimal price;
     private String mobilePhoneNumber;
-    private boolean printed;
+    private boolean printed = false;
 
     public Order() {}
 
