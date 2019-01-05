@@ -74,20 +74,33 @@ $(document).ready(function() {
 
 
             var orders = document.getElementById("ordersTable");
-            for(var i = 0; i < orders.children.length; i++) {
-                var id = document.getElementsByClassName("orderId")[i].innerHTML;
+            fetch('http://193.191.177.8:10368/den-travak/orders').then(response => response.json())
+                .then(data => {
 
-                fetch('http://193.191.177.8:10368/den-travak/orders/' + id, {
-                    method: 'PUT',
-                    headers: {
-                        'Accept': 'application/json',
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
+                    /*for (var i = 0; i < orders.children.length; i++) {
+                        var id = document.getElementsByClassName("orderId")[i].innerHTML;*/
+                    for(var i = 0; i < data.length; i++){
 
-                    }),
-                });
-            }
+                        fetch('http://193.191.177.8:10368/den-travak/orders/' + data[i].id, {
+                            method: 'PUT',
+                            headers: {
+                                'Accept': 'application/json',
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                "id": data[i].id,
+                                "sandwichId": data[i].id,
+                                "name": data[i].sandwichId,
+                                "breadType": data[i].breadType,
+                                "creationDate": data[i].creationDate,
+                                "price": data[i].price,
+                                "mobilePhoneNumber": data[i].mobilePhoneNumber,
+                                "printed": true
+
+                            }),
+                        });
+                    }
+                })
             /*var printed = document.getElementById("printed");
             var ordersTableLength = document.getElementById("ordersTable");
             printed.innerHTML = ordersTableLength.children.length;

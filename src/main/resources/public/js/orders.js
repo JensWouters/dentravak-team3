@@ -62,16 +62,14 @@ function VisualizeOrder(data){
                 cell5.innerHTML = order.mobilePhoneNumber;
                 cell6.innerHTML = order.printed;
 
-                // if(order.printed){
-                //     cell6.innerHTML = "true";
-                //     cell6.style.color = "white";
-                //     cell6.style.backgroundColor = "green";
-                // }
-                // else{
-                //     cell6.innerHTML = "false";
-                //     cell6.style.color = "white";
-                //     cell6.style.backgroundColor = "red";
-                // }
+                if(order.printed){
+                    cell6.style.color = "white";
+                    cell6.style.backgroundColor = "green";
+                }
+                else{
+                    cell6.style.color = "white";
+                    cell6.style.backgroundColor = "red";
+                 }
 
 
             }
