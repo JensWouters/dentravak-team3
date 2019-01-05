@@ -3,6 +3,7 @@ package be.ucll.da.dentravak.controller;
 import be.ucll.da.dentravak.domain.Sandwich;
 import be.ucll.da.dentravak.model.SandwichPreferences;
 import be.ucll.da.dentravak.repository.SandwichRepository;
+import com.google.common.collect.Lists;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestClientException;
@@ -36,17 +37,17 @@ public class SandwichController {
     @RequestMapping("/sandwiches")
     public Iterable<Sandwich> sandwiches() {
 
-        /*try {
+        try {
             SandwichPreferences preferences = getPreferences("ronald.dehuysser@ucll.be");
             //TODO: sort allSandwiches by float in preferences
-            List<Sandwich> allSandwiches =  repo.findAll();
+            Iterable<Sandwich> allSandwiches =  repo.findAll();
             allSandwiches = sortByPreferences(preferences, allSandwiches);
             System.out.println(allSandwiches);
             return allSandwiches;
         } catch (ServiceUnavailableException e) {
             return repo.findAll();
-        }*/
-        return repo.findAll();
+        }
+
     }
 
 //    @RequestMapping("/sandwiches")
@@ -107,9 +108,11 @@ public class SandwichController {
                 .map(si -> si.getUri())
                 .findFirst();
     }
-    public List<Sandwich> sortByPreferences(SandwichPreferences preferences, List<Sandwich> allSandwiches) {
-        Collections.sort(allSandwiches, (Sandwich s1, Sandwich s2) -> rating(preferences, s2).compareTo(rating(preferences, s1)));
-        return allSandwiches;
+    public Iterable<Sandwich> sortByPreferences(SandwichPreferences preferences, Iterable<Sandwich> allSandwiches) {
+        List<Sandwich> sandwiches = Lists.newArrayList(allSandwiches);
+        Collections.sort( sandwiches, (Sandwich s1, Sandwich s2) -> rating(preferences, s2).compareTo(rating(preferences, s1)));
+        Iterable<Sandwich> finalSandwiches = sandwiches;
+        return finalSandwiches;
     }
 
     private Float rating(SandwichPreferences preferences, Sandwich s2) {
