@@ -35,10 +35,10 @@ public class SandwichController {
         try {
             SandwichPreferences preferences = getPreferences("ronald.dehuysser@ucll.be");
             //TODO: sort allSandwiches by float in preferences
-            List<Sandwich> allSandwiches =  repo.findAll();
-            allSandwiches = sortByPreferences(preferences, allSandwiches);
-            System.out.println(allSandwiches);
-            return allSandwiches;
+
+            List<Sandwich> sandwiches = sortByPreferences(preferences);
+            System.out.println(sandwiches);
+            return sandwiches;
         } catch (ServiceUnavailableException e) {
             return repo.findAll();
         }
@@ -102,7 +102,8 @@ public class SandwichController {
                 .map(si -> si.getUri())
                 .findFirst();
     }
-    public List<Sandwich> sortByPreferences(SandwichPreferences preferences, List<Sandwich> allSandwiches) {
+    public List<Sandwich> sortByPreferences(SandwichPreferences preferences) {
+        List<Sandwich> allSandwiches = repo.findAll();
         Collections.sort(allSandwiches, Comparator.comparing((Sandwich sandwich) -> rating(preferences, sandwich)).reversed());
         //Collections.sort(allSandwiches, (Sandwich s1, Sandwich s2) -> rating(preferences, s2).compareTo(rating(preferences, s1)));
         return allSandwiches;
