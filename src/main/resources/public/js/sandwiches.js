@@ -209,7 +209,7 @@ function addOrder(data) {
         document.getElementById("rating").style.display = "block";
         document.getElementById("cardRatingButton").style.display = "block";
         var button = document.getElementById("cardRatingButton");
-        button.onclick = function(){rateSandwich(data, phoneNumber)};
+        button.onclick = function(){rateSandwich(data)};
 
 
         alert("Your sandwich is being prepared!");
@@ -217,9 +217,9 @@ function addOrder(data) {
 
 }
 
-function rateSandwich(data, phoneNumber){
+function rateSandwich(data){
     let recommendedItem = {};
-    recommendedItem.emailAddress = phoneNumber;
+    recommendedItem.emailAddress = "ronald.dehuysser@ucll.be";
     recommendedItem.ratedItem = data.id;
     recommendedItem.rating = document.getElementById("rating").value;
 
