@@ -110,7 +110,7 @@ public class SandwichController {
     }
     public Iterable<Sandwich> sortByPreferences(SandwichPreferences preferences, Iterable<Sandwich> allSandwiches) {
         List<Sandwich> sandwiches = Lists.newArrayList(allSandwiches);
-        Collections.sort( sandwiches, (Sandwich s1, Sandwich s2) -> rating(preferences, s2).compareTo(rating(preferences, s1)));
+        Collections.sort(sandwiches, (Sandwich s1, Sandwich s2) -> rating(preferences, s2).compareTo(rating(preferences, s1)));
         Iterable<Sandwich> finalSandwiches = sandwiches;
         return finalSandwiches;
     }
