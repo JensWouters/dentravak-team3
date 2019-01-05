@@ -132,6 +132,7 @@ function getSandwich(id) {
                 cardRatingButton.id = "cardRatingButton";
                 cardRatingButton.innerHTML = "Rate Sandwich";
                 cardRatingButton.style.display = "none";
+                cardRatingButton.onclick = function(){rateSandwich(data, document.getElementById("rating").value)};
 
 
                 cardBody.appendChild(cardTitle);
@@ -203,9 +204,8 @@ function addOrder(data) {
             })
         });
         document.getElementById("orderButton").style.display = "none";
-        var rating = document.getElementById("rating").style.display = "block";
-        var l = document.getElementById("cardRatingButton").style.display = "block";
-        l.onclick = function(){rateSandwich(data, rating)};
+        document.getElementById("rating").style.display = "block";
+        document.getElementById("cardRatingButton").style.display = "block";
 
 
         alert("Your sandwich is being prepared!");
