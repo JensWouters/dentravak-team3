@@ -47,8 +47,7 @@ public class OrderController {
     }
 
     @RequestMapping(value = "/orders/{id}", method = RequestMethod.PUT)
-    @ResponseBody
-    public Order putOrderById(@PathVariable UUID id, @RequestBody Order order) {
+    public Order putOrderById(@PathVariable(value="id") UUID id, @RequestBody Order order) {
         if(id.equals(order.getId())) {
             order.setPrinted(true);
             return repo.save(order);
