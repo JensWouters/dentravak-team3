@@ -32,16 +32,17 @@ public class SandwichController {
     @RequestMapping("/sandwiches")
     public List<Sandwich> sandwiches() {
 
-        try {
-            SandwichPreferences preferences = getPreferences("ronald.dehuysser@ucll.be");
-            //TODO: sort allSandwiches by float in preferences
-            List<Sandwich> allSandwiches =  repo.findAll();
-            allSandwiches = sortByPreferences(preferences, allSandwiches);
-            System.out.println(allSandwiches);
-            return allSandwiches;
-        } catch (ServiceUnavailableException e) {
-            return repo.findAll();
-        }
+//        try {
+//            SandwichPreferences preferences = getPreferences("ronald.dehuysser@ucll.be");
+//            //TODO: sort allSandwiches by float in preferences
+//            List<Sandwich> allSandwiches =  repo.findAll();
+//            allSandwiches = sortByPreferences(preferences, allSandwiches);
+//            System.out.println(allSandwiches);
+//            return allSandwiches;
+//        } catch (ServiceUnavailableException e) {
+//            return repo.findAll();
+//        }
+        return repo.findAll();
     }
 
 //    @RequestMapping("/sandwiches")
@@ -103,8 +104,8 @@ public class SandwichController {
                 .findFirst();
     }
     public List<Sandwich> sortByPreferences(SandwichPreferences preferences, List<Sandwich> allSandwiches) {
-        //Collections.sort(allSandwiches, Comparator.comparing((Sandwich sandwich) -> rating(preferences, sandwich)).reversed());
-        Collections.sort(allSandwiches, (Sandwich s1, Sandwich s2) -> rating(preferences, s2).compareTo(rating(preferences, s1)));
+        Collections.sort(allSandwiches, Comparator.comparing((Sandwich sandwich) -> rating(preferences, sandwich)).reversed());
+        //Collections.sort(allSandwiches, (Sandwich s1, Sandwich s2) -> rating(preferences, s2).compareTo(rating(preferences, s1)));
         return allSandwiches;
     }
 
