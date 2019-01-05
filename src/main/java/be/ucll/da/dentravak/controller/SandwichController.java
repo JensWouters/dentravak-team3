@@ -34,7 +34,7 @@ public class SandwichController {
     }
 
     @RequestMapping("/sandwiches")
-    public List<Sandwich> sandwiches() {
+    public Iterable<Sandwich> sandwiches() {
 
         try {
             SandwichPreferences preferences = getPreferences("ronald.dehuysser@ucll.be");
