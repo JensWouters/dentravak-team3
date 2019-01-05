@@ -71,10 +71,18 @@ $(document).ready(function() {
         if(yesOrNo){
             var args = [$('#orders>table'), 'export.csv'];
             exportTableToCSV.apply(this, args);
-            var printed = document.getElementById("printed");
+
+            fetch('http://193.191.177.8:10368/den-travak/orders', {
+                method: 'PUT',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+            });
+            /*var printed = document.getElementById("printed");
             var ordersTableLength = document.getElementById("ordersTable");
             printed.innerHTML = ordersTableLength.children.length;
-            printed.style.fontSize = 0;
+            printed.style.fontSize = 0;*/
         }
         else{
             return false;

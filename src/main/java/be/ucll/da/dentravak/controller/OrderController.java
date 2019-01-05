@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.inject.Inject;
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @RestController
 public class OrderController {
@@ -43,6 +44,17 @@ public class OrderController {
 //            return ordersOnDate;
 //        }
         return repo.findAll();
+    }
+
+    @RequestMapping(value = "/orders/{id}", method = RequestMethod.PUT)
+    @ResponseBody
+    public Order putOrderById(@PathVariable UUID id, @RequestBody Order order) {
+        if(id.equals(order.getId())) {
+            order.setPrinted(true);
+            return repo.save(order);
+        }else{
+            throw new IllegalArgumentException("don't do that... stop!");
+        }
     }
 
 }

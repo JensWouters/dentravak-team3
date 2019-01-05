@@ -160,6 +160,7 @@ function addOrder(data) {
 
     var checked;
     var rating = document.getElementById("rating").value;
+    var printed;
 
     if (document.getElementById("boterham").checked) {
         checked = document.getElementById("boterham").value;
@@ -186,7 +187,8 @@ function addOrder(data) {
                 "name": data.name,
                 "breadType": checked,
                 "price": data.price,
-                "mobilePhoneNumber": phoneNumber
+                "mobilePhoneNumber": phoneNumber,
+                "printed": "true"
             })
         });
         /*fetch('http://193.191.177.8:10368/recommendation/recommend', {
