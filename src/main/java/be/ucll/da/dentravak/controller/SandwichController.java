@@ -39,7 +39,8 @@ public class SandwichController {
             List<Sandwich> sandwiches = sortByPreferences(preferences);
             System.out.println(sandwiches);
             return sandwiches;
-        } catch (ServiceUnavailableException e) {
+        } catch (Exception e) {
+            System.out.println("eogjaeragjerg");
             return repo.findAll();
         }
     }
