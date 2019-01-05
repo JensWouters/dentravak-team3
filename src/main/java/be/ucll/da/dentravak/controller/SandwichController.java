@@ -11,7 +11,6 @@ import org.springframework.web.client.RestTemplate;
 import javax.inject.Inject;
 import javax.naming.ServiceUnavailableException;
 import java.net.URI;
-import java.net.URISyntaxException;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -34,7 +33,7 @@ public class SandwichController {
     }
 
     @RequestMapping("/sandwiches")
-    public Iterable<Sandwich> sandwiches() {
+    public List<Sandwich> sandwiches() {
 
         /*try {
             SandwichPreferences preferences = getPreferences("ronald.dehuysser@ucll.be");
