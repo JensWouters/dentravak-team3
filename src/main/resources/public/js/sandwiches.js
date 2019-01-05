@@ -132,6 +132,8 @@ function getSandwich(id) {
                 cardRatingButton.id = "cardRatingButton";
                 cardRatingButton.innerHTML = "Rate Sandwich";
                 cardRatingButton.style.display = "none";
+                cardRatingButton.style.cursor = "pointer";
+                cardRatingButton.style.color = "blue";
 
 
                 cardBody.appendChild(cardTitle);
@@ -203,11 +205,10 @@ function addOrder(data) {
             })
         });
         document.getElementById("orderButton").style.display = "none";
-        var rating = document.getElementById("rating").value;
         document.getElementById("rating").style.display = "block";
         document.getElementById("cardRatingButton").style.display = "block";
         var button = document.getElementById("cardRatingButton");
-        button.onclick = function(){rateSandwich(data, phoneNumber, rating)};
+        button.onclick = function(){rateSandwich(data, phoneNumber)};
 
 
         alert("Your sandwich is being prepared!");
@@ -215,11 +216,11 @@ function addOrder(data) {
 
 }
 
-function rateSandwich(data, phoneNumber, rating){
+function rateSandwich(data, phoneNumber){
     let recommendedItem = {};
     recommendedItem.emailAddress = phoneNumber;
     recommendedItem.ratedItem = data.id;
-    recommendedItem.rating = rating;
+    recommendedItem.rating = document.getElementById("rating").value;
 
     console.log(recommendedItem)
 
