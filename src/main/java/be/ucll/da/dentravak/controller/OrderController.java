@@ -26,8 +26,6 @@ public class OrderController {
 
     @RequestMapping(value = "/orders", method = RequestMethod.POST)
     public Order addOrder(@RequestBody Order o) {
-        //Order order = new Order(o.getSandwichId(), o.getName(), o.getBreadType(), o.getPrice(), o.getMobilePhoneNumber());
-
         o.setCreationDate(LocalDateTime.now());
         return repo.save(o);
     }

@@ -61,6 +61,8 @@ function getSandwich(id) {
             console.log("data:", data);
             let sandwiches = data;
 
+
+
                 let card =  document.createElement('div');
                 let cardBody =  document.createElement('div');
                 let cardTitle =  document.createElement('h5');
@@ -173,8 +175,6 @@ function getSandwich(id) {
 function addOrder(data) {
 
     var checked;
-    var rating = document.getElementById("rating").value;
-    var printed;
 
     if (document.getElementById("boterham").checked) {
         checked = document.getElementById("boterham").value;

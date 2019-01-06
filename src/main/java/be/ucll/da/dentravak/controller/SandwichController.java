@@ -34,8 +34,6 @@ public class SandwichController {
 
         try {
             SandwichPreferences preferences = getPreferences("ronald.dehuysser@ucll.be");
-            //TODO: sort allSandwiches by float in preferences
-
             List<Sandwich> sandwiches = sortByPreferences(preferences);
             System.out.println(sandwiches);
             return sandwiches;
@@ -45,16 +43,7 @@ public class SandwichController {
         }
     }
 
-//    @RequestMapping("/sandwiches")
-//    public List<Sandwich> sandwich() {
-//        /*return SandwichBuilder.aSandwich()
-//                .withIngredients("Kaas & Hesp")
-//                .withName("Smoske")
-//                .withPrice(new BigDecimal("3.50"))
-//                .build();*/
-//
-//        return (List) repo.findAll();
-//    }
+
     @RequestMapping(value = "/sandwiches/{id}", method = RequestMethod.GET)
     public Sandwich getSandwichById(@PathVariable(value="id") UUID id) {
         return repo.findById(id).get();
@@ -89,13 +78,7 @@ public class SandwichController {
                 .getBody();
     }
 
-   /* public Optional<URI> recommendationServiceUrl() {
-        try {
-            return Optional.of(new URI("http://193.191.177.8:10368/recommendation/"));
-        } catch (URISyntaxException e) {
-            throw new RuntimeException(e);
-        }
-    }*/
+
 
     public Optional<URI> recommendationServiceUrl() {
         return discoveryClient.getInstances("recommendation")
@@ -108,7 +91,6 @@ public class SandwichController {
         System.out.println(preferences);
         System.out.println(allSandwiches.size());
         Collections.sort(allSandwiches, Comparator.comparing((Sandwich sandwich) -> rating(preferences, sandwich)).reversed());
-        //Collections.sort(allSandwiches, (Sandwich s1, Sandwich s2) -> rating(preferences, s2).compareTo(rating(preferences, s1)));
         return allSandwiches;
     }
 
