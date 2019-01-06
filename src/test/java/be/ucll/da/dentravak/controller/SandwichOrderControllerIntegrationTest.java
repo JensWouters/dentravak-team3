@@ -54,7 +54,6 @@ public class SandwichOrderControllerIntegrationTest extends AbstractControllerIn
 
     @Test
     public void testGetSandwichOrders_WithOrdersSaved_ReturnsListWithOrders() throws JSONException {
-        //Sandwich sandwich = aSandwich().withName("Americain").withIngredients("Vlees").withPrice(4.0).build();
         Order sandwichOrder = aSandwichOrder().forSandwich(savedSandwich).withBreadType(Order.BreadType.BOTERHAMMEKES).withMobilePhoneNumber("0487/123456").build();
         Order order_with_id = sandwichOrderRepository.save(sandwichOrder);
 
