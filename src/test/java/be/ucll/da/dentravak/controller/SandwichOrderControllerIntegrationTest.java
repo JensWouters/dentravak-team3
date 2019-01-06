@@ -1,8 +1,8 @@
 package be.ucll.da.dentravak.controller;
 
 import be.ucll.da.dentravak.Application;
-import be.ucll.da.dentravak.domain.Sandwich;
 import be.ucll.da.dentravak.domain.Order;
+import be.ucll.da.dentravak.domain.Sandwich;
 import be.ucll.da.dentravak.model.SandwichTestBuilder;
 import be.ucll.da.dentravak.repository.OrderRepository;
 import be.ucll.da.dentravak.repository.SandwichRepository;
@@ -32,7 +32,7 @@ public class SandwichOrderControllerIntegrationTest extends AbstractControllerIn
     public void setUpASavedSandwich() {
         sandwichRepository.deleteAll();
         sandwichOrderRepository.deleteAll();
-        savedSandwich = sandwichRepository.save(SandwichTestBuilder.aSandwich().withName("Americain").withIngredients("vlees").withPrice(3.5).build());
+        savedSandwich = sandwichRepository.save(SandwichTestBuilder.aSandwich().withName("Gezond").withIngredients("Groentjes").withPrice(4.00).build());
     }
 
     @Test
@@ -47,18 +47,21 @@ public class SandwichOrderControllerIntegrationTest extends AbstractControllerIn
     public void testPostSandwichOrder() throws JSONException {
         Order sandwichOrder = aSandwichOrder().forSandwich(savedSandwich).withBreadType(Order.BreadType.BOTERHAMMEKES).withMobilePhoneNumber("0487/123456").build();
         String actualSandwiches = httpPost("/orders", sandwichOrder);
-        String expectedSandwiches = "{\"id\":\"${json-unit.ignore}\",\"sandwichId\":\"" + savedSandwich.getId() + "\",\"name\":\"Americain\",\"breadType\":\"BOTERHAMMEKES\",\"creationDate\":\"${json-unit.ignore}\",\"price\":3.5,\"mobilePhoneNumber\":\"0487/123456\"}";
+        String expectedSandwiches = "{\"id\":\"${json-unit.ignore}\",\"sandwichId\":\"" + savedSandwich.getId() + "\",\"name\":\"Gezond\",\"breadType\":\"BOTERHAMMEKES\",\"creationDate\":\"${json-unit.ignore}\",\"price\":4.00,\"mobilePhoneNumber\":\"0487/123456\"}";
 
         assertThatJson(actualSandwiches).isEqualTo(expectedSandwiches);
     }
 
     @Test
     public void testGetSandwichOrders_WithOrdersSaved_ReturnsListWithOrders() throws JSONException {
+        //Sandwich sandwich = aSandwich().withName("Americain").withIngredients("Vlees").withPrice(4.0).build();
         Order sandwichOrder = aSandwichOrder().forSandwich(savedSandwich).withBreadType(Order.BreadType.BOTERHAMMEKES).withMobilePhoneNumber("0487/123456").build();
-        String actualSandwiches = httpPost("/orders", sandwichOrder);
-        String expectedSandwiches = httpGet("/orders");
+        Order order_with_id = sandwichOrderRepository.save(sandwichOrder);
 
-        assertThatJson(expectedSandwiches).isArray();
+        String actualOrders = httpGet("/orders");
+        String expectedOrders = "[{\"id\":\"${json-unit.ignore}\",\"sandwichId\":\"" + savedSandwich.getId() + "\",\"name\":\"Gezond\",\"breadType\":\"BOTERHAMMEKES\",\"creationDate\":\"${json-unit.ignore}\",\"price\":4.00,\"mobilePhoneNumber\":\"0487/123456\"}]";
+
+        assertThatJson(actualOrders).isEqualTo(expectedOrders);
 
     }
 
