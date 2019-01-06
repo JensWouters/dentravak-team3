@@ -7,7 +7,6 @@ function getSandwiches () {
         .then((resp) => resp.json())
         .then(function(data) {
             let sandwiches = data;
-            console.log(sandwiches);
             return sandwiches.map(function(sandwich) {
                 let card =  document.createElement('div');
                 let cardBody =  document.createElement('div');
@@ -58,7 +57,7 @@ function getSandwich(id) {
     fetch(url)
         .then((resp) => resp.json())
         .then(function(data) {
-            console.log("data:", data);
+
             let sandwiches = data;
 
 
@@ -223,7 +222,7 @@ function rateSandwich(data){
     recommendedItem.ratedItem = data.id;
     recommendedItem.rating = document.getElementById("rating").value;
 
-    console.log(recommendedItem)
+
 
     fetch('/recommendation/recommend/', {
         method: "POST", // *GET, POST, PUT, DELETE, etc.

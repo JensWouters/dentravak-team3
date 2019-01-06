@@ -19,7 +19,7 @@ function getToday(){
 function getAllOrders(){
     fetch('http://193.191.177.8:10368/den-travak/orders').then(response => response.json())
         .then(data => {
-            console.log(data) // Prints result from `response.json()` in getRequest
+            // Prints result from `response.json()` in getRequest
                 VisualizeOrder(data);
             setTimeout(function (){getAllOrders()}, 3000);
         })
@@ -36,8 +36,8 @@ function VisualizeOrder(data){
             var orderDate = new Date(Date.parse(order.creationDate));
 
 
+
             var today = getToday();
-    console.log(orderDate.toLocaleDateString());
             if(orderDate.toLocaleDateString() === today) {
 
                 var ordernummer = i;
